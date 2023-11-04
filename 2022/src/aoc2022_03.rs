@@ -3,22 +3,7 @@ use std::fs::File;
 use std::io::{self, BufRead};
 use std::path::Path;
 
-use clap::Parser;
-use color_eyre::eyre::Result;
-use thiserror::Error;
-
-#[derive(Debug, Error)]
-pub enum InputError {
-    #[error("Invalid play: {0}")]
-    InvalidPlay(String),
-}
-
-#[derive(Parser, Debug)]
-#[command(author, version, about, long_about = None)]
-struct Args {
-    #[arg(index = 1, value_name = "FILE")]
-    input: String,
-}
+use crate::errors::AoCError;
 
 fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
 where
@@ -47,18 +32,15 @@ fn build_score_table() -> HashMap<String, u64> {
     ret
 }
 
-fn main() -> Result<()> {
-    color_eyre::install()?;
-    let args = Args::parse();
-
+pub fn run(input: &str) -> Result<(), AoCError> {
     let score_table = build_score_table();
     let mut score: u64 = 0;
 
-    let lines = read_lines(args.input)?;
+    let lines = read_lines(input)?;
     for line in lines.into_iter().flatten() {
         match score_table.get(&line) {
             Some(points) => score += points,
-            None => panic!("Invalid line: {}", line),
+            None => return Err(AoCError::InvalidInput(line)),
         }
     }
 
