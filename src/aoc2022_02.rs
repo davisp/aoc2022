@@ -4,7 +4,7 @@ use std::collections::BinaryHeap;
 use crate::errors::AoCError;
 use crate::reader::read_lines;
 
-pub fn run(input: &str) -> Result<(), AoCError> {
+pub fn run(input: String) -> Result<(), AoCError> {
     let mut heap = BinaryHeap::new();
     let mut cur_val: u64 = 0;
 

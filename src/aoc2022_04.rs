@@ -22,7 +22,7 @@ fn build_score_table() -> HashMap<String, u64> {
     ret
 }
 
-pub fn run(input: &str) -> Result<(), AoCError> {
+pub fn run(input: String) -> Result<(), AoCError> {
     let score_table = build_score_table();
     let mut score: u64 = 0;
 

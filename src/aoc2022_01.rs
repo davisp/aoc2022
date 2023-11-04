@@ -3,7 +3,7 @@ use std::cmp;
 use crate::errors::AoCError;
 use crate::reader::read_lines;
 
-pub fn run(input: &str) -> Result<(), AoCError> {
+pub fn run(input: String) -> Result<(), AoCError> {
     let mut max_val: u64 = 0;
     let mut cur_val: u64 = 0;
 
