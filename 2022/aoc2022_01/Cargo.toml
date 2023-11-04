@@ -1,0 +1,16 @@
+[package]
+name = "aoc2022_01"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies.clap]
+version = "4.4.7"
+features = ["derive"]
+
+[dependencies.color-eyre]
+version = "0.6.2"
+
+[dependencies.thiserror]
+version = "1.0.50"
