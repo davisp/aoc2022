@@ -24,9 +24,12 @@ pub fn run(input: String) -> Result<(), AoCError> {
     let mut total = 0;
     let lines = read_lines(input)?;
     for mut chunk in lines.chunks(3).into_iter() {
-        let set1: HashSet<char> = HashSet::from_iter(chunk.next().unwrap()?.as_str().chars());
-        let set2: HashSet<char> = HashSet::from_iter(chunk.next().unwrap()?.as_str().chars());
-        let set3: HashSet<char> = HashSet::from_iter(chunk.next().unwrap()?.as_str().chars());
+        let set1: HashSet<char> =
+            HashSet::from_iter(chunk.next().unwrap()?.as_str().chars());
+        let set2: HashSet<char> =
+            HashSet::from_iter(chunk.next().unwrap()?.as_str().chars());
+        let set3: HashSet<char> =
+            HashSet::from_iter(chunk.next().unwrap()?.as_str().chars());
 
         let in_all = [&set2, &set3]
             .iter()
@@ -36,7 +39,9 @@ pub fn run(input: String) -> Result<(), AoCError> {
 
         match in_all.iter().next() {
             Some(priority) => total += priorities.get(priority).unwrap(),
-            None => return Err(AoCError::InvalidInput(String::from("Some stuff"))),
+            None => {
+                return Err(AoCError::InvalidInput(String::from("Some stuff")))
+            }
         }
     }
 
