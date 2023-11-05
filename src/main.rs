@@ -13,6 +13,8 @@ mod aoc2022_07;
 mod aoc2022_08;
 mod aoc2022_09;
 mod aoc2022_10;
+mod aoc2022_11;
+mod aoc2022_12;
 mod errors;
 mod reader;
 
