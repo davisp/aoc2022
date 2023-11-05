@@ -8,6 +8,7 @@ mod aoc2022_02;
 mod aoc2022_03;
 mod aoc2022_04;
 mod aoc2022_05;
+mod aoc2022_06;
 mod errors;
 mod reader;
 
@@ -40,6 +41,7 @@ fn main() -> Result<(), AoCError> {
         "03" => aoc2022_03::run(input),
         "04" => aoc2022_04::run(input),
         "05" => aoc2022_05::run(input),
+        "06" => aoc2022_06::run(input),
         _ => panic!("Unknown solver: {}", args.solver),
     }
 }

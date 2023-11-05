@@ -12,5 +12,8 @@ features = ["derive"]
 [dependencies.color-eyre]
 version = "0.6.2"
 
+[dependencies.itertools]
+version = "0.11.0"
+
 [dependencies.thiserror]
 version = "1.0.50"
