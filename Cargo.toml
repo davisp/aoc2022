@@ -15,5 +15,8 @@ version = "0.6.2"
 [dependencies.itertools]
 version = "0.11.0"
 
+[dependencies.regex]
+version = "1.10.2"
+
 [dependencies.thiserror]
 version = "1.0.50"
