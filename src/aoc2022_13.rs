@@ -53,6 +53,26 @@ impl FSEntry {
 
         panic!("Failed to find child node: {}", paths[0]);
     }
+
+    fn dir_sizes(&self, sizes: &mut Vec<u64>) -> u64 {
+        if self.children.is_empty() {
+            return 0;
+        }
+
+        let mut total: u64 = 0;
+        for child in self.children.iter() {
+            let nchildren = child.borrow().children.len();
+            if nchildren > 0 {
+                total += child.borrow().dir_sizes(sizes);
+            } else {
+                total += child.borrow().size;
+            }
+        }
+
+        sizes.push(total);
+
+        total
+    }
 }
 
 struct FSEntryPretty<'a>(&'a FSEntryRef);
@@ -123,7 +143,11 @@ pub fn run(input: String) -> Result<(), AoCError> {
         }
     }
 
-    println!("{:?}", FSEntryPretty(&root));
+    let mut sizes = Vec::new();
+    root.borrow().dir_sizes(&mut sizes);
+
+    let total: u64 = sizes.iter().filter(|s| *s < &100000).sum();
+    println!("Total: {}", total);
 
     Ok(())
 }
